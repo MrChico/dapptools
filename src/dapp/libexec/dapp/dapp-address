@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ### dapp-address -- determine address of newly generated contract
 ### Usage: dapp address <sender> <nonce>
-set -ex
+set -e
 [[ $# -ne 2 ]] && echo "Usage: dapp address <sender> <nonce>" >&2 && exit 1
 
 sender=$1
@@ -28,4 +28,5 @@ else
   exit 1
 fi
 
+echo "$rlp"
 seth keccak "$rlp" | cut -b 27-66
